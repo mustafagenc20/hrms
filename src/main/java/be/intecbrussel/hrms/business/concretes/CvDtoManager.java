@@ -1,10 +1,15 @@
 package be.intecbrussel.hrms.business.concretes;
 
+import be.intecbrussel.hrms.business.abstracts.*;
+import be.intecbrussel.hrms.core.utilities.results.DataResult;
+import be.intecbrussel.hrms.core.utilities.results.SuccessDataResult;
+import be.intecbrussel.hrms.dataAccess.UnemployedDao;
+import be.intecbrussel.hrms.entities.dtos.CvDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CvDtoManager implements CvDtoService{
+public class CvDtoManager implements CvDtoService {
 
     private UnemployedDao unemployedDao;
     private EducationService educationService;
