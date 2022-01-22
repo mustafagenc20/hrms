@@ -1,5 +1,10 @@
 package be.intecbrussel.hrms.business.abstracts;
 
+import be.intecbrussel.hrms.core.utilities.results.DataResult;
+import be.intecbrussel.hrms.core.utilities.results.Result;
+import be.intecbrussel.hrms.entities.concretes.Education;
+import be.intecbrussel.hrms.entities.dtos.EducationDto;
+
 import java.util.List;
 
 public interface EducationService {
