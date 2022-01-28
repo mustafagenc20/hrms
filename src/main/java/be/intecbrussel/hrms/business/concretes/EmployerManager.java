@@ -1,12 +1,19 @@
 package be.intecbrussel.hrms.business.concretes;
 
+import be.intecbrussel.hrms.business.abstracts.EmployerService;
+import be.intecbrussel.hrms.core.utilities.results.*;
+import be.intecbrussel.hrms.dataAccess.EmployerDao;
+import be.intecbrussel.hrms.dataAccess.EmployerUpdateDao;
+import be.intecbrussel.hrms.entities.concretes.Employer;
+import be.intecbrussel.hrms.entities.concretes.EmployerUpdate;
+import be.intecbrussel.hrms.entities.dtos.EmployerRegisterDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EmployerManager implements EmployerService{
+public class EmployerManager implements EmployerService {
 
     private EmployerDao employerDao;
     private EmployerUpdateDao updateDao;
@@ -28,26 +35,26 @@ public class EmployerManager implements EmployerService{
             employer.setPassword(employerDto.getPassword());
             employer.setPhoneNumber(employerDto.getPhoneNumber());
             this.employerDao.save(employer);
-            return new SuccessResult("Kayıt işlemi başarılı.");
+            return new SuccessResult("The registration is successful.");
         }
-        return new ErrorResult("Domain doğrulama başarısız lütfen tekrar deneyin.");
+        return new ErrorResult("Domain verification failed, please try again.");
     }
 
     @Override
     public Result updateEmployer(EmployerUpdate employerUpdate) {
         employerUpdate.setEmployeeId(null);
         if (!this.employerDao.existsById(employerUpdate.getEmployerId())) {
-            return new ErrorResult("İşveren bulunamadı.");
+            return new ErrorResult("The employer could not be found.");
         }
         Employer employer = this.employerDao.getOne(employerUpdate.getEmployerId());
         if (this.updateDao.getByEmployerIdAndApproveStatusFalse(employer.getUserId()) != null) {
-            return new ErrorResult("Zaten talep oluşturmuşsunuz.");
+            return new ErrorResult("You have already created a request.");
         }
         this.updateDao.save(employerUpdate);
         employer.setWaitingForUpdate(true);
         this.employerDao.save(employer);
         return new SuccessResult(
-                "Güncelleme talebiniz alındı. İlgili personel tarafından kontrol edildikten sonra onaylanacaktır.");
+                "Your update request has been received. It will be approved after being checked by the relevant personnel.");
     }
 
     @Override
@@ -55,14 +62,14 @@ public class EmployerManager implements EmployerService{
         String[] mails = email.split("@", 2);
         String web = domain.substring(4);
         if (mails[1].equals(web)) {
-            return new SuccessResult("Domain kontrolü başarılı.");
+            return new SuccessResult("Domain check successful.");
         }
-        return new ErrorResult("Domain kontrolü başarısız.");
+        return new ErrorResult("Domain check failed.");
     }
 
     @Override
     public DataResult<List<Employer>> getAll() {
-        return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(), "İş verenler listelendi.");
+        return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(), "Employers are listed.");
     }
 
     @Override
