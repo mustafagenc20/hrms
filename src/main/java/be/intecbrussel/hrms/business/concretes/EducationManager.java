@@ -1,12 +1,18 @@
 package be.intecbrussel.hrms.business.concretes;
 
+import be.intecbrussel.hrms.business.abstracts.EducationService;
+import be.intecbrussel.hrms.core.utilities.results.*;
+import be.intecbrussel.hrms.dataAccess.EducationDao;
+import be.intecbrussel.hrms.dataAccess.UnemployedDao;
+import be.intecbrussel.hrms.entities.concretes.Education;
+import be.intecbrussel.hrms.entities.dtos.EducationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class EducationManager implements EducationService{
+public class EducationManager implements EducationService {
 
     private EducationDao educationDao;
     private UnemployedDao unemployedDao;
@@ -23,7 +29,7 @@ public class EducationManager implements EducationService{
         Education education = new Education();
         if (this.educationDao.getBySchoolNameAndDepartmentAndUnemployed_UserId(educationDto.getSchoolName(),
                 educationDto.getDepartment(), educationDto.getUnemployedId()) != null) {
-            return new ErrorResult("Bu okul bilgisini zaten eklemişsiniz.");
+            return new ErrorResult("You have already added this school information.");
         }
         education.setSchoolName(educationDto.getSchoolName());
         education.setDepartment(educationDto.getDepartment());
@@ -36,27 +42,27 @@ public class EducationManager implements EducationService{
         education.setUnemployed(this.unemployedDao.getOne(educationDto.getUnemployedId()));
 
         this.educationDao.save(education);
-        return new SuccessResult("Eğitim bilgileri eklendi.");
+        return new SuccessResult("Education information added.");
     }
 
     @Override
     public DataResult<List<Education>> getAll() {
-        return new SuccessDataResult<List<Education>>(this.educationDao.findAll(), "Eğitim bilgileri listelendi.");
+        return new SuccessDataResult<List<Education>>(this.educationDao.findAll(), "Education information is listed.");
     }
 
     @Override
     public DataResult<List<Education>> getByUnemployedIdOrderByGraduatedDateDesc(int unemployedId) {
         return new SuccessDataResult<List<Education>>(
-                this.educationDao.getByUnemployed_UserIdOrderByGraduatedDateDesc(unemployedId), "Devam ediyor.");
+                this.educationDao.getByUnemployed_UserIdOrderByGraduatedDateDesc(unemployedId), "Continues.");
     }
 
     @Override
     public Result deleteEducation(int educationId) {
         if (!this.educationDao.existsById(educationId)) {
-            return new ErrorResult("Okul bilgisi bulunamadı.");
+            return new ErrorResult("School information not found.");
         }
         this.educationDao.deleteById(educationId);
-        return new SuccessResult("Okul bilgisi silindi.");
+        return new SuccessResult("School information has been deleted.");
     }
 
     @Override
@@ -66,13 +72,13 @@ public class EducationManager implements EducationService{
                 && education.getDepartment() == educationDto.getDepartment()
                 && education.getStartDate() == educationDto.getStartDate()
                 && education.getGraduatedDate() == educationDto.getGraduatedDate()) {
-            return new ErrorResult("Değişiklik yapmadınız.");
+            return new ErrorResult("You did not make any changes.");
         }
         education.setSchoolName(educationDto.getSchoolName());
         education.setDepartment(educationDto.getDepartment());
         education.setStartDate(educationDto.getStartDate());
         education.setGraduatedDate(education.getGraduatedDate());
         this.educationDao.save(education);
-        return new SuccessResult("Okul bilgileri güncellendi.");
+        return new SuccessResult("School information has been updated.");
     }
 }
