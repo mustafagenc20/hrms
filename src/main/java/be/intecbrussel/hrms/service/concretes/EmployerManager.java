@@ -1,29 +1,23 @@
-package be.intecbrussel.hrms.business.concretes;
+package be.intecbrussel.hrms.service.concretes;
 
-import be.intecbrussel.hrms.business.abstracts.EmployerService;
+import be.intecbrussel.hrms.service.abstracts.EmployerService;
 import be.intecbrussel.hrms.core.utilities.results.*;
-import be.intecbrussel.hrms.dataAccess.EmployerDao;
-import be.intecbrussel.hrms.dataAccess.EmployerUpdateDao;
-import be.intecbrussel.hrms.entities.concretes.Employer;
-import be.intecbrussel.hrms.entities.concretes.EmployerUpdate;
-import be.intecbrussel.hrms.entities.dtos.EmployerRegisterDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import be.intecbrussel.hrms.repository.EmployerDao;
+import be.intecbrussel.hrms.repository.EmployerUpdateDao;
+import be.intecbrussel.hrms.model.entities.Employer;
+import be.intecbrussel.hrms.model.entities.EmployerUpdate;
+import be.intecbrussel.hrms.model.dtos.EmployerRegisterDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class EmployerManager implements EmployerService {
 
-    private EmployerDao employerDao;
-    private EmployerUpdateDao updateDao;
-
-    @Autowired
-    public EmployerManager(EmployerDao employerDao, EmployerUpdateDao updateDao) {
-        super();
-        this.employerDao = employerDao;
-        this.updateDao = updateDao;
-    }
+    private final EmployerDao employerDao;
+    private final EmployerUpdateDao updateDao;
 
     @Override
     public Result addEmployer(EmployerRegisterDto employerDto) {
