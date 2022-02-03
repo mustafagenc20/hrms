@@ -1,8 +1,8 @@
 package be.intecbrussel.hrms.api;
 
-import be.intecbrussel.hrms.business.abstracts.EmployerService;
+import be.intecbrussel.hrms.service.abstracts.EmployerService;
 import be.intecbrussel.hrms.core.utilities.util.ResponseEntityReturn;
-import be.intecbrussel.hrms.entities.concretes.EmployerUpdate;
+import be.intecbrussel.hrms.model.entities.EmployerUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
