@@ -1,10 +1,10 @@
-package be.intecbrussel.hrms.business.abstracts;
+package be.intecbrussel.hrms.service.abstracts;
 
 import be.intecbrussel.hrms.core.utilities.results.DataResult;
 import be.intecbrussel.hrms.core.utilities.results.Result;
-import be.intecbrussel.hrms.entities.concretes.ConfirmingUpdate;
-import be.intecbrussel.hrms.entities.concretes.Employer;
-import be.intecbrussel.hrms.entities.concretes.EmployerUpdate;
+import be.intecbrussel.hrms.model.entities.ConfirmingUpdate;
+import be.intecbrussel.hrms.model.entities.Employer;
+import be.intecbrussel.hrms.model.entities.EmployerUpdate;
 
 import java.util.List;
 
