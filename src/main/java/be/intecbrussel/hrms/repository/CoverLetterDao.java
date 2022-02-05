@@ -1,6 +1,6 @@
-package be.intecbrussel.hrms.dataAccess;
+package be.intecbrussel.hrms.repository;
 
-import be.intecbrussel.hrms.entities.concretes.CoverLetter;
+import be.intecbrussel.hrms.model.entities.CoverLetter;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CoverLetterDao extends JpaRepository<CoverLetter, Integer> {
