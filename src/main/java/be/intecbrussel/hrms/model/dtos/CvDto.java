@@ -1,6 +1,6 @@
-package be.intecbrussel.hrms.entities.dtos;
+package be.intecbrussel.hrms.model.dtos;
 
-import be.intecbrussel.hrms.entities.concretes.*;
+import be.intecbrussel.hrms.model.entities.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
