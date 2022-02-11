@@ -1,7 +1,7 @@
-package be.intecbrussel.hrms.business.abstracts;
+package be.intecbrussel.hrms.service.abstracts;
 
 import be.intecbrussel.hrms.core.utilities.results.DataResult;
-import be.intecbrussel.hrms.entities.dtos.CvDto;
+import be.intecbrussel.hrms.model.dtos.CvDto;
 
 public interface CvDtoService {
 
