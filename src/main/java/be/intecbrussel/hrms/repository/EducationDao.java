@@ -1,6 +1,6 @@
-package be.intecbrussel.hrms.dataAccess;
+package be.intecbrussel.hrms.repository;
 
-import be.intecbrussel.hrms.entities.concretes.Education;
+import be.intecbrussel.hrms.model.entities.Education;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
