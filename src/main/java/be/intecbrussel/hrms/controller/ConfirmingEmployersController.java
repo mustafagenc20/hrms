@@ -1,4 +1,4 @@
-package be.intecbrussel.hrms.api;
+package be.intecbrussel.hrms.controller;
 
 import be.intecbrussel.hrms.service.abstracts.ConfirmingEmployerService;
 import be.intecbrussel.hrms.core.utilities.results.DataResult;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/confirmingEmployer/")
+@RequestMapping("/controller/confirmingEmployer/")
 @CrossOrigin
 public class ConfirmingEmployersController {
 
