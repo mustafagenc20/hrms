@@ -1,17 +1,17 @@
 package be.intecbrussel.hrms.core.concretes;
 
 import be.intecbrussel.hrms.core.abstracts.EmailService;
-import be.intecbrussel.hrms.entities.concretes.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import be.intecbrussel.hrms.model.entities.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class EmailManager implements EmailService {
 
-    @Autowired
-    private JavaMailSender mailSender;
+   private final JavaMailSender mailSender;
 
     @Override
     public void sendVerifyEmail(User user, String code) {
@@ -19,7 +19,7 @@ public class EmailManager implements EmailService {
         message.setSubject("HRMS Mail Verification");
         message.setText(
                 "Please click the link below to complete your registration.\n" +
-                        "http://localhost:8080/api/verification/approve/"
+                        "http://localhost:8081/controller/verification/approve/"
                         + code);
         message.setTo(user.getEmail());
         message.setFrom("hrmstestemailaddress@gmail.com");
