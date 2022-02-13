@@ -1,33 +1,26 @@
-package be.intecbrussel.hrms.business.concretes;
+package be.intecbrussel.hrms.service.concretes;
 
-import be.intecbrussel.hrms.business.abstracts.EmployeeService;
+import be.intecbrussel.hrms.service.abstracts.EmployeeService;
 import be.intecbrussel.hrms.core.utilities.results.*;
-import be.intecbrussel.hrms.dataAccess.EmployeeDao;
-import be.intecbrussel.hrms.dataAccess.PositionDao;
-import be.intecbrussel.hrms.dataAccess.UserDao;
-import be.intecbrussel.hrms.entities.concretes.Employee;
-import be.intecbrussel.hrms.entities.dtos.EmployeeDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import be.intecbrussel.hrms.repository.EmployeeDao;
+import be.intecbrussel.hrms.repository.PositionDao;
+import be.intecbrussel.hrms.repository.UserDao;
+import be.intecbrussel.hrms.model.entities.Employee;
+import be.intecbrussel.hrms.model.dtos.EmployeeDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class EmployeeManager implements EmployeeService {
 
-    private EmployeeDao employeeDao;
-    private UserDao userDao;
-    private PositionDao positionDao;
+    private final EmployeeDao employeeDao;
+    private final UserDao userDao;
+    private final PositionDao positionDao;
 
-    @Autowired
-    public EmployeeManager(EmployeeDao employeeDao, UserDao userDao, PositionDao positionDao) {
-        super();
-        this.employeeDao = employeeDao;
-        this.userDao = userDao;
-        this.positionDao = positionDao;
-    }
-
-    @Override
+     @Override
     public Result addEmployee(EmployeeDto employeeDto) {
         if (this.userDao.findByEmail(employeeDto.getEmail()) != null) {
             return new ErrorResult("This e-mail address has already been taken.");
