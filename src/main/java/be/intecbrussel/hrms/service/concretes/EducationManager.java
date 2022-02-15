@@ -1,28 +1,22 @@
-package be.intecbrussel.hrms.business.concretes;
+package be.intecbrussel.hrms.service.concretes;
 
-import be.intecbrussel.hrms.business.abstracts.EducationService;
+import be.intecbrussel.hrms.service.abstracts.EducationService;
 import be.intecbrussel.hrms.core.utilities.results.*;
-import be.intecbrussel.hrms.dataAccess.EducationDao;
-import be.intecbrussel.hrms.dataAccess.UnemployedDao;
-import be.intecbrussel.hrms.entities.concretes.Education;
-import be.intecbrussel.hrms.entities.dtos.EducationDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import be.intecbrussel.hrms.repository.EducationDao;
+import be.intecbrussel.hrms.repository.UnemployedDao;
+import be.intecbrussel.hrms.model.entities.Education;
+import be.intecbrussel.hrms.model.dtos.EducationDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class EducationManager implements EducationService {
 
-    private EducationDao educationDao;
-    private UnemployedDao unemployedDao;
-
-    @Autowired
-    public EducationManager(EducationDao educationDao, UnemployedDao unemployedDao) {
-        super();
-        this.educationDao = educationDao;
-        this.unemployedDao = unemployedDao;
-    }
+    private final EducationDao educationDao;
+    private final UnemployedDao unemployedDao;
 
     @Override
     public Result addEducation(EducationDto educationDto) {
