@@ -1,4 +1,4 @@
-package be.intecbrussel.hrms.api;
+package be.intecbrussel.hrms.controller;
 
 import be.intecbrussel.hrms.service.abstracts.EmployerService;
 import be.intecbrussel.hrms.core.utilities.util.ResponseEntityReturn;
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/employers/")
+@RequestMapping("/controller/employers/")
 @CrossOrigin
 public class EmployersController {
 

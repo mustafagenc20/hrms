@@ -1,14 +1,14 @@
-package be.intecbrussel.hrms.api;
+package be.intecbrussel.hrms.controller;
 
-import be.intecbrussel.hrms.business.abstracts.EmployeeService;
+import be.intecbrussel.hrms.service.abstracts.EmployeeService;
 import be.intecbrussel.hrms.core.utilities.util.ResponseEntityReturn;
-import be.intecbrussel.hrms.entities.dtos.EmployeeDto;
+import be.intecbrussel.hrms.model.dtos.EmployeeDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/employees/")
+@RequestMapping("/controller/employees/")
 @CrossOrigin
 public class EmployeesController {
 
