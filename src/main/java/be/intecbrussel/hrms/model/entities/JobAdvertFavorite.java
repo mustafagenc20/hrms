@@ -1,4 +1,4 @@
-package be.intecbrussel.hrms.entities.concretes;
+package be.intecbrussel.hrms.model.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
