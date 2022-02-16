@@ -1,12 +1,11 @@
-package be.intecbrussel.hrms.business.concretes;
+package be.intecbrussel.hrms.service.concretes;
 
-import be.intecbrussel.hrms.business.abstracts.UserService;
+import be.intecbrussel.hrms.service.abstracts.UserService;
 import be.intecbrussel.hrms.core.utilities.results.DataResult;
 import be.intecbrussel.hrms.core.utilities.results.SuccessDataResult;
-import be.intecbrussel.hrms.dataAccess.UserDao;
-import be.intecbrussel.hrms.entities.concretes.User;
+import be.intecbrussel.hrms.repository.UserDao;
+import be.intecbrussel.hrms.model.entities.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

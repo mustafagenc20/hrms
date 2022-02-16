@@ -1,5 +1,6 @@
-package be.intecbrussel.hrms.dataAccess;
+package be.intecbrussel.hrms.repository;
 
+import be.intecbrussel.hrms.model.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
