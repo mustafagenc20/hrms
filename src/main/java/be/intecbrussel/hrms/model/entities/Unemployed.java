@@ -1,10 +1,7 @@
-package be.intecbrussel.hrms.entities.concretes;
+package be.intecbrussel.hrms.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -15,7 +12,8 @@ import java.util.List;
 @Entity
 @Table(name = "unemployeds")
 @PrimaryKeyJoinColumn(name = "user_id")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
@@ -68,4 +66,14 @@ public class Unemployed extends User {
 	@OneToOne(mappedBy = "unemployed")
 	@JsonIgnore
 	private Photo photos;
+
+	@Override
+	public String toString() {
+		return "Unemployed{" +
+				"firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", nationalityId='" + nationalityId + '\'' +
+				", birthDate=" + birthDate +
+				'}';
+	}
 }
