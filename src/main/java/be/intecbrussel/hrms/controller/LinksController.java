@@ -1,14 +1,14 @@
-package be.intecbrussel.hrms.api;
+package be.intecbrussel.hrms.controller;
 
-import be.intecbrussel.hrms.business.abstracts.LinkService;
+import be.intecbrussel.hrms.service.abstracts.LinkService;
 import be.intecbrussel.hrms.core.utilities.util.ResponseEntityReturn;
-import be.intecbrussel.hrms.entities.dtos.LinkDto;
+import be.intecbrussel.hrms.model.dtos.LinkDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/links/")
+@RequestMapping("/controller/links/")
 @CrossOrigin
 public class LinksController {
 

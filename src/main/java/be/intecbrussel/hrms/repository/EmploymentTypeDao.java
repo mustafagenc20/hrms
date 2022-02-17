@@ -1,6 +1,6 @@
-package be.intecbrussel.hrms.dataAccess;
+package be.intecbrussel.hrms.repository;
 
-import be.intecbrussel.hrms.entities.concretes.EmploymentType;
+import be.intecbrussel.hrms.model.entities.EmploymentType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmploymentTypeDao extends JpaRepository<EmploymentType, Integer> {

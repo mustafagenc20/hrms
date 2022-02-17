@@ -1,4 +1,4 @@
-package be.intecbrussel.hrms.entities.dtos;
+package be.intecbrussel.hrms.model.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
