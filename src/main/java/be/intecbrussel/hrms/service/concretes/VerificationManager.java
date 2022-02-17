@@ -1,22 +1,24 @@
-package be.intecbrussel.hrms.business.concretes;
+package be.intecbrussel.hrms.service.concretes;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import be.intecbrussel.hrms.service.abstracts.VerificationService;
+import be.intecbrussel.hrms.core.utilities.results.ErrorResult;
+import be.intecbrussel.hrms.core.utilities.results.Result;
+import be.intecbrussel.hrms.core.utilities.results.SuccessResult;
+import be.intecbrussel.hrms.repository.UserDao;
+import be.intecbrussel.hrms.repository.VerificationDao;
+import be.intecbrussel.hrms.model.entities.User;
+import be.intecbrussel.hrms.model.entities.Verification;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
 @Service
-public class VerificationManager implements VerificationService{
+@RequiredArgsConstructor
+public class VerificationManager implements VerificationService {
 
-    private VerificationDao verificationDao;
-    private UserDao userDao;
-
-    @Autowired
-    public VerificationManager(VerificationDao verificationDao, UserDao userDao) {
-        super();
-        this.verificationDao = verificationDao;
-        this.userDao = userDao;
-    }
+    private final VerificationDao verificationDao;
+    private final UserDao userDao;
 
     @Override
     public Result verifyUser(String code) {
@@ -28,10 +30,10 @@ public class VerificationManager implements VerificationService{
                 verify.setVerified(true);
                 this.userDao.save(user);
                 this.verificationDao.save(verify);
-                return new SuccessResult("Kullanıcı başarıyla doğrulandı.");
+                return new SuccessResult("The user has been successfully authenticated.");
             }
         }
-        return new ErrorResult("Doğrulama işlemi başarısız");
+        return new ErrorResult("Verification failed.");
     }
 
     @Override
