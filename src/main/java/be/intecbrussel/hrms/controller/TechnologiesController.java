@@ -1,14 +1,14 @@
-package be.intecbrussel.hrms.api;
+package be.intecbrussel.hrms.controller;
 
-import be.intecbrussel.hrms.business.abstracts.TechnologyService;
+import be.intecbrussel.hrms.service.abstracts.TechnologyService;
 import be.intecbrussel.hrms.core.utilities.util.ResponseEntityReturn;
-import be.intecbrussel.hrms.entities.dtos.TechnologyDto;
+import be.intecbrussel.hrms.model.dtos.TechnologyDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/technologies/")
+@RequestMapping("/controller/technologies/")
 @CrossOrigin
 public class TechnologiesController {
 
