@@ -21,9 +21,9 @@ public class PhotoUploadAdapter implements PhotoUploadService {
     private Map<String, String> valuesMap = new HashMap<>();
 
     public PhotoUploadAdapter() {
-        valuesMap.put("cloud_name", "hrmsproject");
-        valuesMap.put("api_key", "242199341551429");
-        valuesMap.put("api_secret", "mB9E2gaCgHlgmsvIReKCuAI9aFY");
+        valuesMap.put("cloud_name", "hrms-final-project-for-intec");
+        valuesMap.put("api_key", "143311477291386");
+        valuesMap.put("api_secret", "WeF6qGOy3A-4JOjqv2UBLMu1FgU");
         this.cloudinary = new Cloudinary(valuesMap);
     }
 
