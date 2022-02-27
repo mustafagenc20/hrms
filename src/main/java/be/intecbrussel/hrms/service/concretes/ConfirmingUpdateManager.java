@@ -53,12 +53,12 @@ public class ConfirmingUpdateManager implements ConfirmingUpdateService {
 
         this.confirmingUpdateDao.save(confirmingUpdate);
 
-        return new SuccessResult("The update request has been approved.");
+        return new SuccessResult("The update request has been approved");
     }
 
     @Override
     public DataResult<List<ConfirmingUpdate>> getAll() {
-        return new SuccessDataResult<List<ConfirmingUpdate>>(this.confirmingUpdateDao.findAll(), "All validation transactions are listed.");
+        return new SuccessDataResult<List<ConfirmingUpdate>>(this.confirmingUpdateDao.findAll(), "All validation transactions are listed");
     }
 
     @Override
