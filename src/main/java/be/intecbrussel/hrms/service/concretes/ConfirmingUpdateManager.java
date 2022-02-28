@@ -68,6 +68,6 @@ public class ConfirmingUpdateManager implements ConfirmingUpdateService {
 
     @Override
     public DataResult<List<Employer>> getByWaitingForUpdateTrue() {
-        return new SuccessDataResult<List<Employer>>(this.employerDao.getByWaitingForUpdateTrue(), "Pending employers for approved are listed.");
+        return new SuccessDataResult<List<Employer>>(this.employerDao.getByWaitingForUpdateTrue(), "Pending employers for approved are listed");
     }
 }
