@@ -63,7 +63,7 @@ public class ConfirmingUpdateManager implements ConfirmingUpdateService {
 
     @Override
     public DataResult<List<EmployerUpdate>> getByApproveStatusFalse() {
-        return new SuccessDataResult<List<EmployerUpdate>>(this.employerUpdateDao.getByApproveStatusFalse(), "Listed according to approval status.");
+        return new SuccessDataResult<List<EmployerUpdate>>(this.employerUpdateDao.getByApproveStatusFalse(), "Listed according to approval status");
     }
 
     @Override
