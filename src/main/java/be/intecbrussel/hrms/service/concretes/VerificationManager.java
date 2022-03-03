@@ -30,7 +30,7 @@ public class VerificationManager implements VerificationService {
                 verify.setVerified(true);
                 this.userDao.save(user);
                 this.verificationDao.save(verify);
-                return new SuccessResult("The user has been successfully authenticated.");
+                return new SuccessResult("The user has been successfully authenticated");
             }
         }
         return new ErrorResult("Verification failed.");
