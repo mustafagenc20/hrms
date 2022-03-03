@@ -33,25 +33,25 @@ public class UnemployedManager implements UnemployedService {
             Unemployed save = unemployedDao.save(unemployed);
 
             this.photoService.newRegister(save.getUserId());
-            return new SuccessResult("The registration is successful.");
+            return new SuccessResult("The registration is successful");
 
         }
-        return new ErrorResult("Identity information is incorrect. Check and try again.");
+        return new ErrorResult("Identity information is incorrect. Check and try again");
     }
 
     @Override
     public DataResult<List<Unemployed>> getAll() {
-        return new SuccessDataResult<List<Unemployed>>(this.unemployedDao.findAll(), "Job seekers listed.");
+        return new SuccessDataResult<List<Unemployed>>(this.unemployedDao.findAll(), "Job seekers listed");
     }
 
     @Override
     public DataResult<Unemployed> getByNationalityId(String nationalityId) {
-        return new SuccessDataResult<Unemployed>(this.unemployedDao.getByNationalityId(nationalityId), "Data was retrieved according to Identity Number.");
+        return new SuccessDataResult<Unemployed>(this.unemployedDao.getByNationalityId(nationalityId), "Data was retrieved according to Identity Number");
     }
 
     @Override
     public DataResult<Unemployed> getByEmail(String email) {
-        return new SuccessDataResult<Unemployed>(this.unemployedDao.getByEmail(email),"The data is listed according to the e-mail address.");
+        return new SuccessDataResult<Unemployed>(this.unemployedDao.getByEmail(email),"The data is listed according to the e-mail address");
     }
 
     @Override
