@@ -51,6 +51,6 @@ public class LinkManager implements LinkService {
         link.setGithubLink(linkDto.getGithubLink());
         link.setLinkedinLink(linkDto.getLinkedinLink());
         this.linkDao.save(link);
-        return new SuccessResult("Links have been updated.");
+        return new SuccessResult("Links have been updated");
     }
 }
