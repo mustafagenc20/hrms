@@ -33,7 +33,7 @@ public class VerificationManager implements VerificationService {
                 return new SuccessResult("The user has been successfully authenticated");
             }
         }
-        return new ErrorResult("Verification failed.");
+        return new ErrorResult("Verification failed");
     }
 
     @Override
