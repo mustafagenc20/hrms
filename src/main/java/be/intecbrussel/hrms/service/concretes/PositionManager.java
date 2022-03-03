@@ -31,7 +31,7 @@ public class PositionManager implements PositionService {
 
     @Override
     public DataResult<List<Position>> getAll() {
-        return new SuccessDataResult<List<Position>>(this.positionDao.findAll(), "Available positions are listed.");
+        return new SuccessDataResult<List<Position>>(this.positionDao.findAll(), "Available positions are listed");
     }
 
     @Override
