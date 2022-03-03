@@ -22,11 +22,11 @@ public class PositionManager implements PositionService {
     @Override
     public Result addPosition(Position position) {
         if (this.positionIsExist(position.getPositionName()).getData() != null) {
-            return new ErrorResult("The position is available.");
+            return new ErrorResult("The position is available");
         }
 
         this.positionDao.save(position);
-        return new SuccessResult("The position has been successfully added.");
+        return new SuccessResult("The position has been successfully added");
     }
 
     @Override
