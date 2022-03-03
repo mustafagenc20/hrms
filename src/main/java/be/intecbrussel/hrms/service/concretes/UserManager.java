@@ -23,6 +23,6 @@ public class UserManager implements UserService {
 
     @Override
     public DataResult<List<User>> getByMailConfirmed() {
-        return new SuccessDataResult<List<User>>(this.userDao.findByMailIsVerifyTrue(), "Approved users are listed.");
+        return new SuccessDataResult<List<User>>(this.userDao.findByMailIsVerifyTrue(), "Approved users are listed");
     }
 }
