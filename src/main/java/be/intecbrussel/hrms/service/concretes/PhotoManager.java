@@ -32,7 +32,7 @@ public class PhotoManager implements PhotoService {
         photo.setPhotoUrl(result.getData().get("url").toString());
         photo.setUploadDate(LocalDate.now());
         this.photoDao.save(photo);
-        return new SuccessResult("The photo has been uploaded.");
+        return new SuccessResult("The photo has been uploaded");
     }
 
     @Override
@@ -52,21 +52,21 @@ public class PhotoManager implements PhotoService {
             this.photoUploadService.delete(photo.getPhotoId());
             photo.setPhotoUrl(defaultPhoto);
             this.photoDao.save(photo);
-            return new SuccessResult("The photo was successfully deleted.");
+            return new SuccessResult("The photo was successfully deleted");
         } catch (IOException exception) {
-            return new ErrorResult("The photo could not be deleted.");
+            return new ErrorResult("The photo could not be deleted");
         }
     }
 
     @Override
     public DataResult<List<Photo>> getAll() {
-        return new SuccessDataResult<List<Photo>>(this.photoDao.findAll(), "Photos listed.");
+        return new SuccessDataResult<List<Photo>>(this.photoDao.findAll(), "Photos listed");
     }
 
     @Override
     public DataResult<Photo> getByUnemployedId(int unemployedId) {
         if(this.photoDao.getByUnemployed_UserId(unemployedId) == null) {
-            return new ErrorDataResult<Photo>("No photo found for the user you entered.");
+            return new ErrorDataResult<Photo>("No photo found for the user you entered");
         }
         return new SuccessDataResult<Photo>(this.photoDao.getByUnemployed_UserId(unemployedId));
     }
