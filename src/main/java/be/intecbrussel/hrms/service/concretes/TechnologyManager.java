@@ -23,34 +23,34 @@ public class TechnologyManager implements TechnologyService {
         Technology technology = new Technology();
         if (this.technologyDao.getByTechnologyNameAndUnemployed_UserId(technologyDto.getTechnologyName(),
                 technologyDto.getUnemployedId()) != null) {
-            return new ErrorResult("You have already added this technology.");
+            return new ErrorResult("You have already added this technology");
         }
         technology.setTechnologyName(technologyDto.getTechnologyName());
         technology.setTechnologyLevel(technologyDto.getTechnologyLevel());
         technology.setUnemployed(this.unemployedDao.getOne(technologyDto.getUnemployedId()));
 
         this.technologyDao.save(technology);
-        return new SuccessResult("Technology information added.");
+        return new SuccessResult("Technology information added");
     }
 
     @Override
     public DataResult<List<Technology>> getAll() {
-        return new SuccessDataResult<List<Technology>>(this.technologyDao.findAll(), "Technology information is listed.");
+        return new SuccessDataResult<List<Technology>>(this.technologyDao.findAll(), "Technology information is listed");
     }
 
     @Override
     public DataResult<List<Technology>> getByUnemployedId(int unemployedId) {
         return new SuccessDataResult<List<Technology>>(this.technologyDao.getByUnemployed_UserId(unemployedId),
-                "The job seeker's technology information is listed.");
+                "The job seeker's technology information is listed");
     }
 
     @Override
     public Result deleteTechnology(int technologyId) {
         if (!this.technologyDao.existsById(technologyId)) {
-            return new ErrorResult("Technology information not found.");
+            return new ErrorResult("Technology information not found");
         }
         this.technologyDao.deleteById(technologyId);
-        return new SuccessResult("Technology information has been deleted.");
+        return new SuccessResult("Technology information has been deleted");
     }
 
     @Override
@@ -63,6 +63,6 @@ public class TechnologyManager implements TechnologyService {
         technology.setTechnologyName(technologyDto.getTechnologyName());
         technology.setTechnologyLevel(technologyDto.getTechnologyLevel());
         this.technologyDao.save(technology);
-        return new SuccessResult("Technology information has been successfully updated.");
+        return new SuccessResult("Technology information has been successfully updated");
     }
 }
