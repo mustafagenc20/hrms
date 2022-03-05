@@ -23,7 +23,7 @@ public class LanguageManager implements LanguageService {
         Language language = new Language();
         if (this.languageDao.getByLanguageNameAndUnemployed_UserId(languageDto.getLanguageName(),
                 languageDto.getUnemployedId()) != null) {
-            return new ErrorResult("You have already added this language.");
+            return new ErrorResult("You have already added this language");
         }
         language.setLanguageName(languageDto.getLanguageName());
         language.setLanguageLevel(languageDto.getLanguageLevel());
@@ -35,22 +35,22 @@ public class LanguageManager implements LanguageService {
 
     @Override
     public DataResult<List<Language>> getAll() {
-        return new SuccessDataResult<List<Language>>(this.languageDao.findAll(), "Languages listed.");
+        return new SuccessDataResult<List<Language>>(this.languageDao.findAll(), "Languages listed");
     }
 
     @Override
     public DataResult<List<Language>> getByUnemployedId(int unemployedId) {
         return new SuccessDataResult<List<Language>>(this.languageDao.getByUnemployed_UserId(unemployedId),
-                "The job seeker's language information is listed.");
+                "The job seeker's language information is listed");
     }
 
     @Override
     public Result deleteLanguage(int languageId) {
         if (!this.languageDao.existsById(languageId)) {
-            return new ErrorResult("Language information not found.");
+            return new ErrorResult("Language information not found");
         }
         this.languageDao.deleteById(languageId);
-        return new SuccessResult("Language information has been deleted.");
+        return new SuccessResult("Language information has been deleted");
     }
 
     @Override
@@ -58,7 +58,7 @@ public class LanguageManager implements LanguageService {
         Language language = this.languageDao.getOne(languageId);
         if (language.getLanguageLevel() == languageDto.getLanguageLevel()
                 && language.getLanguageName() == languageDto.getLanguageName()) {
-            return new ErrorResult("You did not make any changes.");
+            return new ErrorResult("You did not make any changes");
         }
         language.setLanguageName(languageDto.getLanguageName());
         language.setLanguageLevel(languageDto.getLanguageLevel());
