@@ -29,28 +29,28 @@ public class JobExperienceManager implements JobExperienceService {
         experience.setUnemployed(this.unemployedDao.getOne(jobExperienceDto.getUnemployedId()));
 
         this.jobExperienceDao.save(experience);
-        return new SuccessResult("Work experience added.");
+        return new SuccessResult("Work experience added");
     }
 
     @Override
     public Result deleteJobExperience(int experienceId) {
         if (!this.jobExperienceDao.existsById(experienceId)) {
-            return new ErrorResult("Work experience information not found.");
+            return new ErrorResult("Work experience information not found");
         }
         this.jobExperienceDao.deleteById(experienceId);
-        return new SuccessResult("Work experience information has been deleted.");
+        return new SuccessResult("Work experience information has been deleted");
     }
 
     @Override
     public DataResult<List<JobExperience>> getAll() {
         return new SuccessDataResult<List<JobExperience>>(this.jobExperienceDao.findAll(),
-                "Work experience is listed.");
+                "Work experience is listed");
     }
 
     @Override
     public DataResult<List<JobExperience>> getByUnemployedIdOrderByLeaveDateDesc(int unemployedId) {
         return new SuccessDataResult<List<JobExperience>>(
-                this.jobExperienceDao.getByUnemployed_UserIdOrderByLeaveDateDesc(unemployedId), "Continues.");
+                this.jobExperienceDao.getByUnemployed_UserIdOrderByLeaveDateDesc(unemployedId), "Continues");
     }
 
     @Override
@@ -60,13 +60,13 @@ public class JobExperienceManager implements JobExperienceService {
                 && jobExperience.getPositionName() == jobExperienceDto.getPositionName()
                 && jobExperience.getStartDate() == jobExperienceDto.getStartDate()
                 && jobExperience.getLeaveDate() == jobExperienceDto.getLeaveDate()) {
-            return new ErrorResult("You did not make any changes.");
+            return new ErrorResult("You did not make any changes");
         }
         jobExperience.setWorkplaceName(jobExperienceDto.getWorkplaceName());
         jobExperience.setPositionName(jobExperienceDto.getPositionName());
         jobExperience.setStartDate(jobExperienceDto.getStartDate());
         jobExperience.setLeaveDate(jobExperienceDto.getLeaveDate());
         this.jobExperienceDao.save(jobExperience);
-        return new SuccessResult("Work experience information has been updated.");
+        return new SuccessResult("Work experience information has been updated");
     }
 }
