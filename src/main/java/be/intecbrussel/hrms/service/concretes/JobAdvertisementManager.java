@@ -49,11 +49,11 @@ public class JobAdvertisementManager implements JobAdvertisementService {
         jobAdvertisement.setEmployer(employerDao.getById(advertisementDto.getEmployerId()));
 
         if (advertisementDto.getMaxSalary() <= advertisementDto.getMinSalary()) {
-            return new ErrorResult("The maximum salary cannot be equal to or lower than the minimum salary.");
+            return new ErrorResult("The maximum salary cannot be equal to or lower than the minimum salary");
         }
 
         this.advertisementDao.save(jobAdvertisement);
-        return new SuccessResult("New job posting added.");
+        return new SuccessResult("New job posting added");
     }
 
     @Override
@@ -65,13 +65,13 @@ public class JobAdvertisementManager implements JobAdvertisementService {
     @Override
     public DataResult<List<JobAdvertisement>> getByAdvertStatusAndEmployerIdSorted(int employerId) {
         return new SuccessDataResult<List<JobAdvertisement>>(
-                this.advertisementDao.getByAdvertStatusFalseAndEmployer_UserIdOrderByCreatedDateAsc(employerId), "Data Listed.");
+                this.advertisementDao.getByAdvertStatusFalseAndEmployer_UserIdOrderByCreatedDateAsc(employerId), "Data Listed");
     }
 
     @Override
     public DataResult<List<JobAdvertisement>> getByAdvertStatusTrueAndEmployerId(int employerId) {
         return new SuccessDataResult<List<JobAdvertisement>>(
-                this.advertisementDao.getByAdvertStatusTrueAndEmployer_UserId(employerId), "Data Listed.");
+                this.advertisementDao.getByAdvertStatusTrueAndEmployer_UserId(employerId), "Data Listed");
     }
 
     @Override
@@ -80,11 +80,11 @@ public class JobAdvertisementManager implements JobAdvertisementService {
         if(advertisement.getAdvertStatus()) {
             advertisement.setAdvertStatus(false);
             this.advertisementDao.save(advertisement);
-            return new SuccessResult("Job posting has been disabled.");
+            return new SuccessResult("Job posting has been disabled");
         }
         advertisement.setAdvertStatus(true);
         this.advertisementDao.save(advertisement);
-        return new SuccessResult("Job posting has been activated.");
+        return new SuccessResult("Job posting has been activated");
     }
 
     @Override
