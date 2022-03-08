@@ -23,7 +23,7 @@ public class EmployeeManager implements EmployeeService {
      @Override
     public Result addEmployee(EmployeeDto employeeDto) {
         if (this.userDao.findByEmail(employeeDto.getEmail()) != null) {
-            return new ErrorResult("This e-mail address has already been taken.");
+            return new ErrorResult("This e-mail address has already been taken");
         }
         Employee employee = new Employee();
         employee.setFirstName(employeeDto.getFirstName());
@@ -34,7 +34,7 @@ public class EmployeeManager implements EmployeeService {
         employee.setPosition(this.positionDao.getOne(employeeDto.getPositionId()));
         employee.setMailIsVerify(true);
         this.employeeDao.save(employee);
-        return new SuccessResult("The staff has been successfully added.");
+        return new SuccessResult("The staff has been successfully added");
     }
 
     @Override
@@ -47,12 +47,12 @@ public class EmployeeManager implements EmployeeService {
         employee.setPosition(this.positionDao.getOne(employeeDto.getPositionId()));
         employee.setPassword(employeeDto.getPassword());
         this.employeeDao.save(employee);
-        return new SuccessResult("Staff information has been updated.");
+        return new SuccessResult("Staff information has been updated");
     }
 
     @Override
     public DataResult<List<Employee>> getAll() {
-        return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(), "System personnel have been listed.");
+        return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(), "System personnel have been listed");
     }
 
     @Override
@@ -63,6 +63,6 @@ public class EmployeeManager implements EmployeeService {
     @Override
     public Result deleteEmployee(int employeeId) {
         this.employeeDao.deleteById(employeeId);
-        return new SuccessResult("The personnel has been deleted.");
+        return new SuccessResult("The personnel has been deleted");
     }
 }
