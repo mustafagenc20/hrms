@@ -29,26 +29,26 @@ public class EmployerManager implements EmployerService {
             employer.setPassword(employerDto.getPassword());
             employer.setPhoneNumber(employerDto.getPhoneNumber());
             this.employerDao.save(employer);
-            return new SuccessResult("The registration is successful.");
+            return new SuccessResult("The registration is successful");
         }
-        return new ErrorResult("Domain verification failed, please try again.");
+        return new ErrorResult("Domain verification failed, please try again");
     }
 
     @Override
     public Result updateEmployer(EmployerUpdate employerUpdate) {
         employerUpdate.setEmployeeId(null);
         if (!this.employerDao.existsById(employerUpdate.getEmployerId())) {
-            return new ErrorResult("The employer could not be found.");
+            return new ErrorResult("The employer could not be found");
         }
         Employer employer = this.employerDao.getOne(employerUpdate.getEmployerId());
         if (this.updateDao.getByEmployerIdAndApproveStatusFalse(employer.getUserId()) != null) {
-            return new ErrorResult("You have already created a request.");
+            return new ErrorResult("You have already created a request");
         }
         this.updateDao.save(employerUpdate);
         employer.setWaitingForUpdate(true);
         this.employerDao.save(employer);
         return new SuccessResult(
-                "Your update request has been received. It will be approved after being checked by the relevant personnel.");
+                "Your update request has been received. It will be approved after being checked by the relevant personnel");
     }
 
     @Override
@@ -56,14 +56,14 @@ public class EmployerManager implements EmployerService {
         String[] mails = email.split("@", 2);
         String web = domain.substring(4);
         if (mails[1].equals(web)) {
-            return new SuccessResult("Domain check successful.");
+            return new SuccessResult("Domain check successful");
         }
         return new ErrorResult("Domain check failed.");
     }
 
     @Override
     public DataResult<List<Employer>> getAll() {
-        return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(), "Employers are listed.");
+        return new SuccessDataResult<List<Employer>>(this.employerDao.findAll(), "Employers are listed");
     }
 
     @Override
