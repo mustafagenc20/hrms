@@ -23,7 +23,7 @@ public class EducationManager implements EducationService {
         Education education = new Education();
         if (this.educationDao.getBySchoolNameAndDepartmentAndUnemployed_UserId(educationDto.getSchoolName(),
                 educationDto.getDepartment(), educationDto.getUnemployedId()) != null) {
-            return new ErrorResult("You have already added this school information.");
+            return new ErrorResult("You have already added this school information");
         }
         education.setSchoolName(educationDto.getSchoolName());
         education.setDepartment(educationDto.getDepartment());
@@ -36,27 +36,27 @@ public class EducationManager implements EducationService {
         education.setUnemployed(this.unemployedDao.getOne(educationDto.getUnemployedId()));
 
         this.educationDao.save(education);
-        return new SuccessResult("Education information added.");
+        return new SuccessResult("Education information added");
     }
 
     @Override
     public DataResult<List<Education>> getAll() {
-        return new SuccessDataResult<List<Education>>(this.educationDao.findAll(), "Education information is listed.");
+        return new SuccessDataResult<List<Education>>(this.educationDao.findAll(), "Education information is listed");
     }
 
     @Override
     public DataResult<List<Education>> getByUnemployedIdOrderByGraduatedDateDesc(int unemployedId) {
         return new SuccessDataResult<List<Education>>(
-                this.educationDao.getByUnemployed_UserIdOrderByGraduatedDateDesc(unemployedId), "Continues.");
+                this.educationDao.getByUnemployed_UserIdOrderByGraduatedDateDesc(unemployedId), "Continues");
     }
 
     @Override
     public Result deleteEducation(int educationId) {
         if (!this.educationDao.existsById(educationId)) {
-            return new ErrorResult("School information not found.");
+            return new ErrorResult("School information not found");
         }
         this.educationDao.deleteById(educationId);
-        return new SuccessResult("School information has been deleted.");
+        return new SuccessResult("School information has been deleted");
     }
 
     @Override
@@ -66,13 +66,13 @@ public class EducationManager implements EducationService {
                 && education.getDepartment() == educationDto.getDepartment()
                 && education.getStartDate() == educationDto.getStartDate()
                 && education.getGraduatedDate() == educationDto.getGraduatedDate()) {
-            return new ErrorResult("You did not make any changes.");
+            return new ErrorResult("You did not make any changes");
         }
         education.setSchoolName(educationDto.getSchoolName());
         education.setDepartment(educationDto.getDepartment());
         education.setStartDate(educationDto.getStartDate());
         education.setGraduatedDate(education.getGraduatedDate());
         this.educationDao.save(education);
-        return new SuccessResult("School information has been updated.");
+        return new SuccessResult("School information has been updated");
     }
 }
