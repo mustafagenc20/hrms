@@ -48,6 +48,6 @@ public class ConfirmingEmployerManager implements ConfirmingEmployerService {
 
     @Override
     public DataResult<List<Employer>> getByEmployerIsConfirmedFalse() {
-        return new SuccessDataResult<List<Employer>>(this.employerDao.getByEmployerIsConfirmedFalse(), "Unconfirmed employers are listed.");
+        return new SuccessDataResult<List<Employer>>(this.employerDao.getByEmployerIsConfirmedFalse(), "Unconfirmed employers are listed");
     }
 }
