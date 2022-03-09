@@ -37,9 +37,9 @@ public class ConfirmingJobAdvertisementManager implements ConfirmingJobAdvertise
         this.confirmingJobAdvertisementDao.save(confirmAdvert);
 
         if (status) {
-            return new SuccessResult("You approved the advertisement.");
+            return new SuccessResult("You approved the advertisement");
         } else {
-            return new SuccessResult("You did not approve the advertisement.");
+            return new SuccessResult("You did not approve the advertisement");
         }
 
     }
@@ -52,6 +52,6 @@ public class ConfirmingJobAdvertisementManager implements ConfirmingJobAdvertise
     @Override
     public DataResult<List<JobAdvertisement>> getByAdvertIsConfirmedFalse() {
         return new SuccessDataResult<List<JobAdvertisement>>(this.advertisementDao.getByAdvertIsConfirmedFalse(),
-                "Disapproved are listed.");
+                "Disapproved are listed");
     }
 }
