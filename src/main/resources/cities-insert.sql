@@ -8,4 +8,5 @@ INSERT INTO cities (city_id, city_name) VALUES
 (7,'Ostend'),
 (8,'Brussels'),
 (9,'Lier'),
+(10,'Machelen'),
 (10,'Namur')
