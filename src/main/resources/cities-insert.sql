@@ -10,4 +10,5 @@ INSERT INTO cities (city_id, city_name) VALUES
 (9,'Lier'),
 (10,'Machelen'),
 (11,'Leuven'),
-(12,'Namur')
+(12,'Sint Niklaas'),
+(13,'Namur')
