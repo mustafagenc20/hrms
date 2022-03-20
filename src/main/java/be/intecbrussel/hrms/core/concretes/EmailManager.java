@@ -18,7 +18,7 @@ public class EmailManager implements EmailService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setSubject("HRMS Mail Verification");
         message.setText(
-                "Please click the link below to complete your registration.\n" +
+                "Please click the link below to complete your registration\n" +
                         "http://localhost:8081/controller/verification/approve/"
                         + code);
         message.setTo(user.getEmail());
