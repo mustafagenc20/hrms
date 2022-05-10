@@ -110,7 +110,7 @@ public class AuthManager implements AuthService {
         } else if (!user.getPassword().equals(loginDto.getPassword())) {
             return new ErrorDataResult<LoginReturnDto>("You entered an incorrect password");
         } else if (!user.getMailIsVerify()) {
-            return new ErrorDataResult<LoginReturnDto>("To log in, you need to confirm your e-mail address.");
+            return new ErrorDataResult<LoginReturnDto>("To log in, you need to confirm your e-mail address");
         }
 
         LoginReturnDto loginReturnDto = new LoginReturnDto();
