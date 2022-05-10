@@ -106,7 +106,7 @@ public class AuthManager implements AuthService {
     public DataResult<LoginReturnDto> login(LoginDto loginDto) {
         User user = this.userDao.findByEmail(loginDto.getEmail().toString());
         if (user == null) {
-            return new ErrorDataResult<LoginReturnDto>("Email address is incorrect or not registered.");
+            return new ErrorDataResult<LoginReturnDto>("Email address is incorrect or not registered");
         } else if (!user.getPassword().equals(loginDto.getPassword())) {
             return new ErrorDataResult<LoginReturnDto>("You entered an incorrect password");
         } else if (!user.getMailIsVerify()) {
