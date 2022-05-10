@@ -67,7 +67,7 @@ public class AuthManager implements AuthService {
     public DataResult<EmployerRegisterDto> registerEmployer(EmployerRegisterDto employerDto, String confirmPassword) {
 
         if (!this.checkEmail(employerDto.getEmail()).isSuccess()) {
-            return new ErrorDataResult<EmployerRegisterDto>("The e-mail address has already been taken.");
+            return new ErrorDataResult<EmployerRegisterDto>("The e-mail address has already been taken");
         }
         if (this.confirmPassword(employerDto.getPassword(), confirmPassword).isSuccess()) {
             Result result = this.employerService.addEmployer(employerDto);
@@ -75,7 +75,7 @@ public class AuthManager implements AuthService {
                 User user = this.employerDao.getByEmail(employerDto.getEmail());
                 this.emailService.sendVerifyEmail(user, this.verificationService.generateCode(user));
                 return new SuccessDataResult<EmployerRegisterDto>(employerDto,
-                        "Registration successful. A verification link has been sent to your e-mail address.");
+                        "Registration successful. A verification link has been sent to your e-mail address");
             }
             return new ErrorDataResult<EmployerRegisterDto>(result.getMessage());
         }
