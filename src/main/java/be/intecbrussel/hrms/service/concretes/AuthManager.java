@@ -86,7 +86,7 @@ public class AuthManager implements AuthService {
     public DataResult<UnemployedRegisterDto> registerUnemployed(UnemployedRegisterDto unemployedDto,
                                                                 String confirmPassword) {
         if (!this.checkEmail(unemployedDto.getEmail()).isSuccess()) {
-            return new ErrorDataResult<UnemployedRegisterDto>("The e-mail address has already been taken.");
+            return new ErrorDataResult<UnemployedRegisterDto>("The e-mail address has already been taken");
         }
         if (this.confirmPassword(unemployedDto.getPassword(), confirmPassword).isSuccess()) {
             Result result = this.unemployedService.addUnemployed(unemployedDto);
