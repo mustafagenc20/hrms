@@ -79,7 +79,7 @@ public class AuthManager implements AuthService {
             }
             return new ErrorDataResult<EmployerRegisterDto>(result.getMessage());
         }
-        return new ErrorDataResult<EmployerRegisterDto>("Password does not match. Check and try again.");
+        return new ErrorDataResult<EmployerRegisterDto>("Password does not match. Check and try again");
     }
 
     @Override
@@ -94,7 +94,7 @@ public class AuthManager implements AuthService {
                 User user = this.unemployedDao.getByEmail(unemployedDto.getEmail());
                 this.emailService.sendVerifyEmail(user, this.verificationService.generateCode(user));
                 return new SuccessDataResult<UnemployedRegisterDto>(unemployedDto,
-                        "Registration successful. A verification link has been sent to your e-mail address.");
+                        "Registration successful. A verification link has been sent to your e-mail address");
             }
             return new ErrorDataResult<UnemployedRegisterDto>(result.getMessage());
         }
