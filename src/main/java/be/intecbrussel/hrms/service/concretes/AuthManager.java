@@ -129,7 +129,7 @@ public class AuthManager implements AuthService {
             loginReturnDto.setName(this.employeeDao.getOne(user.getUserId()).getFirstName() + " "
                     + this.employeeDao.getOne(user.getUserId()).getLastName());
         } else {
-            return new ErrorDataResult<LoginReturnDto>("Login failed. Check the information and try again.");
+            return new ErrorDataResult<LoginReturnDto>("Login failed. Check the information and try again");
         }
 
         return new SuccessDataResult<LoginReturnDto>(loginReturnDto, "Signed In.");
