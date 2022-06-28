@@ -58,7 +58,7 @@ public class TechnologyManager implements TechnologyService {
         Technology technology = this.technologyDao.getOne(technologyId);
         if (technology.getTechnologyLevel() == technologyDto.getTechnologyLevel()
                 && technology.getTechnologyName() == technologyDto.getTechnologyName()) {
-            return new ErrorResult("You did not make any changes.");
+            return new ErrorResult("You did not make any changes");
         }
         technology.setTechnologyName(technologyDto.getTechnologyName());
         technology.setTechnologyLevel(technologyDto.getTechnologyLevel());
