@@ -23,7 +23,7 @@ public class TechnologyManager implements TechnologyService {
         Technology technology = new Technology();
         if (this.technologyDao.getByTechnologyNameAndUnemployed_UserId(technologyDto.getTechnologyName(),
                 technologyDto.getUnemployedId()) != null) {
-            return new ErrorResult("You have already added this technology.");
+            return new ErrorResult("You have already added this technology");
         }
         technology.setTechnologyName(technologyDto.getTechnologyName());
         technology.setTechnologyLevel(technologyDto.getTechnologyLevel());
@@ -41,7 +41,7 @@ public class TechnologyManager implements TechnologyService {
     @Override
     public DataResult<List<Technology>> getByUnemployedId(int unemployedId) {
         return new SuccessDataResult<List<Technology>>(this.technologyDao.getByUnemployed_UserId(unemployedId),
-                "The job seeker's technology information is listed.");
+                "The job seeker's technology information is listed");
     }
 
     @Override
