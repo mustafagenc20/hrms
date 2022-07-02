@@ -49,7 +49,7 @@ public class CoverLetterManager implements CoverLetterService {
         }
         CoverLetter coverLetter = this.coverLetterDao.getByUnemployed_UserId(coverLetterDto.getUnemployedId());
         if (coverLetter.getLetterContent().equals(coverLetterDto.getLetterContent())) {
-            return new ErrorResult("You forgot to update");
+            return new ErrorResult("You forgot to update.");
         }
         coverLetter.setLetterContent(coverLetterDto.getLetterContent());
         this.coverLetterDao.save(coverLetter);
